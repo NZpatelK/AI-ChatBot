@@ -1,14 +1,9 @@
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:3834123187.
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:293592575.
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:910774663.
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:myapp/message_widget.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -60,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Padding(
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   vertical: 25,
                   horizontal: 15,
                 ),

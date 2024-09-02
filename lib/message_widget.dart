@@ -13,25 +13,39 @@ class MessageWidget extends StatelessWidget {
 
   @override
 
-  /// from the user (primary color) or not (secondary color).
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Flexible(
-          child: Container(
-            constraints: const BoxConstraints(maxWidth: 520),
-            decoration: BoxDecoration(
-              color: isFromUser
-                  ? Theme.of(context).colorScheme.primary
-                  : Theme.of(context).colorScheme.secondary,
-              borderRadius: BorderRadius.circular(18),
-            ),
-            child: Column(
-              children: [MarkdownBody(data: text)],
-            ),
+    final color = isFromUser ? Colors.blueAccent : const Color(0xFFDFDFDF);
+    final borderRadius = BorderRadius.only(
+      topLeft: const Radius.circular(10),
+      bottomLeft: isFromUser ? const Radius.circular(10) : Radius.zero,
+      topRight: const Radius.circular(10),
+      bottomRight: isFromUser ? Radius.zero : const Radius.circular(10),
+    );
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(15),
+      margin: const EdgeInsets.symmetric(vertical: 15).copyWith(
+        left: isFromUser ? 100 : 10,
+        right: isFromUser ? 10 : 100,
+      ),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: borderRadius,
+      ),
+      child: MarkdownBody(
+        data: text,
+        styleSheet: MarkdownStyleSheet(
+          p: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w400,
           ),
-        )
-      ],
+          h1: const TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
     );
   }
 }
